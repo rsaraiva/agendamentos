@@ -39,8 +39,6 @@ public class TransferenciaBuilder {
     }
 
     public Transferencia build() {
-        Transferencia transferencia = new Transferencia(contaOrigem, contaDestino, valor, dataAgendamento, tipoOperacao);
-        // calcular taxa
-        return transferencia;
+        return new Transferencia(contaOrigem, contaDestino, valor, dataAgendamento, tipoOperacao);
     }
 }
