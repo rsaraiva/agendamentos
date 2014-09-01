@@ -2,7 +2,6 @@ package com.rsaraiva.labs.agendamentos.strategy;
 
 import com.rsaraiva.labs.agendamentos.model.Transferencia;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class TaxaOperacaoTipoB implements Taxa {
