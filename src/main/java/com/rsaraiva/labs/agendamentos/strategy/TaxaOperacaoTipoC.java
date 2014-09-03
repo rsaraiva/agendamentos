@@ -1,5 +1,6 @@
 package com.rsaraiva.labs.agendamentos.strategy;
 
+import com.rsaraiva.labs.agendamentos.model.TipoOperacao;
 import com.rsaraiva.labs.agendamentos.model.Transferencia;
 import java.math.BigDecimal;
 import java.time.temporal.ChronoUnit;
@@ -8,6 +9,9 @@ public class TaxaOperacaoTipoC implements Taxa {
 
     @Override
     public BigDecimal calcula(Transferencia transferencia) {
+        
+        if (!transferencia.getTipoOperacao().equals(TipoOperacao.C))
+            return BigDecimal.ZERO;
         
         long qtdeDiasAteAgendamento = ChronoUnit.DAYS.between(transferencia.getDataCadastro(), transferencia.getDataAgendamento());
         

@@ -4,26 +4,40 @@
 package com.rsaraiva.labs.agendamentos.service;
 
 import com.rsaraiva.labs.agendamentos.model.Transferencia;
+import com.rsaraiva.labs.agendamentos.repository.AgendamentosRepository;
+import com.rsaraiva.labs.agendamentos.strategy.Taxa;
+import java.math.BigDecimal;
+import java.util.Iterator;
 import java.util.List;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.enterprise.inject.Any;
+import javax.enterprise.inject.Instance;
+import javax.inject.Inject;
 
-@Stateless
 public class AgendamentosService {
     
-    @PersistenceContext
-    private EntityManager em;
+    @Inject
+    private AgendamentosRepository repository;
+    
+    @Inject @Any
+    private Instance<Taxa> estrategiasCalculoTaxas;
 
     public void salva(Transferencia transferencia) {
-        em.persist(transferencia);
+        transferencia.setTaxa(calculaTaxa(transferencia));
+        repository.adiciona(transferencia);
+    }
+    
+    // TODO: usar stream
+    private BigDecimal calculaTaxa(Transferencia transferencia) {
+        BigDecimal resultado = BigDecimal.ZERO;
+        Iterator<Taxa> taxas = estrategiasCalculoTaxas.iterator();
+        while(taxas.hasNext()) {
+            Taxa instanciaCalculoTaxa = taxas.next();
+            resultado = resultado.add(instanciaCalculoTaxa.calcula(transferencia));
+        }
+        return resultado;
     }
 
     public List<Transferencia> listaTodas() {
-        return em.createQuery("select t from Transferencia t order by t.dataAgendamento")
-                .setMaxResults(MAX_RESULTS)
-                .getResultList();
+        return repository.getTransferencias();
     }
-    
-    private static final int MAX_RESULTS = 100;
 }

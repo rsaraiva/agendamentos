@@ -1,5 +1,6 @@
 package com.rsaraiva.labs.agendamentos.strategy;
 
+import com.rsaraiva.labs.agendamentos.model.TipoOperacao;
 import com.rsaraiva.labs.agendamentos.model.Transferencia;
 import java.math.BigDecimal;
 import java.time.temporal.ChronoUnit;
@@ -9,10 +10,12 @@ public class TaxaOperacaoTipoB implements Taxa {
     @Override
     public BigDecimal calcula(Transferencia transferencia) {
         
+        if (!transferencia.getTipoOperacao().equals(TipoOperacao.B))
+            return BigDecimal.ZERO;
+        
         if (agendadaParaMaisQue30Dias(transferencia)) {
             return BigDecimal.valueOf(8.0);
         }
-        
         return BigDecimal.valueOf(10.0);
     }
     

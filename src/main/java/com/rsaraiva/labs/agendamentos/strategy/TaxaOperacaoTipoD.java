@@ -1,5 +1,6 @@
 package com.rsaraiva.labs.agendamentos.strategy;
 
+import com.rsaraiva.labs.agendamentos.model.TipoOperacao;
 import com.rsaraiva.labs.agendamentos.model.Transferencia;
 import java.math.BigDecimal;
 
@@ -7,6 +8,9 @@ public class TaxaOperacaoTipoD implements Taxa {
 
     @Override
     public BigDecimal calcula(Transferencia transferencia) {
+        
+        if (!transferencia.getTipoOperacao().equals(TipoOperacao.D))
+            return BigDecimal.ZERO;
         
         if (transferencia.getValor().doubleValue() <= 25000.0)
             return new TaxaOperacaoTipoA().calcula(transferencia);

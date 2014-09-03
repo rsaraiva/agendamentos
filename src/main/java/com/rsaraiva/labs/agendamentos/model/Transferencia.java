@@ -2,36 +2,22 @@ package com.rsaraiva.labs.agendamentos.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
-@Entity
 public class Transferencia implements java.io.Serializable {
     
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    private String contaOrigem;
+    private final String contaOrigem;
     
-    private String contaDestino;
+    private final String contaDestino;
     
-    private BigDecimal valor;
+    private final BigDecimal valor;
     
     private BigDecimal taxa;
     
-    private LocalDate dataAgendamento;
+    private final LocalDate dataAgendamento;
     
-    private LocalDate dataCadastro;
+    private final LocalDate dataCadastro;
     
-    @Enumerated(EnumType.STRING)
-    private TipoOperacao tipoOperacao;
-
-    protected Transferencia() {
-    }
+    private final TipoOperacao tipoOperacao;
 
     public Transferencia(String contaOrigem, String contaDestino, BigDecimal valor, LocalDate dataAgendamento, TipoOperacao tipoOperacao) {
         this.contaOrigem = contaOrigem;
@@ -72,13 +58,5 @@ public class Transferencia implements java.io.Serializable {
 
     public void setTaxa(BigDecimal taxa) {
         this.taxa = taxa;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

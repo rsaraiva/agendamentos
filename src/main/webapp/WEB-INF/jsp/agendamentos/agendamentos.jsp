@@ -52,7 +52,30 @@
 
             <fieldset>
                 <legend><fmt:message key="transferencias_agendadas"/></legend>
-                <!-- TODO -->
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Origem</th>
+                            <th>Destino</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th>Operação</th>
+                            <th>Taxa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${transferencias}" var="transferencia">
+                            <tr>
+                                <td>${transferencia.contaOrigem}</td>
+                                <td>${transferencia.contaDestino}</td>
+                                <td>${transferencia.valor}</td>
+                                <td>${transferencia.dataAgendamento}</td>
+                                <td>${transferencia.tipoOperacao}</td>
+                                <td>${transferencia.taxa}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
             </fieldset>
         </section>
     </body>
