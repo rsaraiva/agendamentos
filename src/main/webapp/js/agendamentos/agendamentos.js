@@ -30,3 +30,8 @@ $(function($) {
         $('#formAgendamentos').submit();
     });
 });
+
+function excluirAgendamento(origem, destino, data, tipo) {
+    // TODO: implementar ajax
+    window.location = '/agendamentos/exclui/' + origem + '/' + destino + '/' + data + '/' + tipo;
+}

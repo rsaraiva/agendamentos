@@ -61,6 +61,7 @@
                             <th>Data</th>
                             <th>Operação</th>
                             <th>Taxa</th>
+                            <th style="width: 30px;">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,6 +73,12 @@
                                 <td>${transferencia.dataAgendamento}</td>
                                 <td>${transferencia.tipoOperacao}</td>
                                 <td>${transferencia.taxa}</td>
+                                <td>
+                                    <button type="button" id="botaoExcluir" class="btn btn-mini" 
+                                            onclick="excluirAgendamento('${transferencia.contaOrigem}', '${transferencia.contaDestino}', '${transferencia.dataAgendamento}', '${transferencia.tipoOperacao}')">
+                                        Excluir
+                                    </button>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>
