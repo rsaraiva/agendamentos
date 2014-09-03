@@ -2,8 +2,7 @@ package com.rsaraiva.labs.agendamentos.test;
 
 import com.rsaraiva.labs.agendamentos.model.TipoOperacao;
 import com.rsaraiva.labs.agendamentos.model.Transferencia;
-import com.rsaraiva.labs.agendamentos.service.CalculadoraDeTaxas;
-import com.rsaraiva.labs.agendamentos.service.TransferenciaBuilder;
+import com.rsaraiva.labs.agendamentos.model.TransferenciaBuilder;
 import com.rsaraiva.labs.agendamentos.strategy.TaxaOperacaoTipoA;
 import com.rsaraiva.labs.agendamentos.strategy.TaxaOperacaoTipoB;
 import com.rsaraiva.labs.agendamentos.strategy.TaxaOperacaoTipoC;
@@ -21,7 +20,7 @@ public class TesteDeCalculoDeTaxas {
                 .daConta("12345-6").paraConta("98765-4").em(LocalDate.now().plusDays(10))
                 .doTipo(TipoOperacao.A).deValor(BigDecimal.valueOf(100.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoA());
+        BigDecimal taxa = new TaxaOperacaoTipoA().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 5.0);
     }
 
@@ -30,7 +29,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(30))
                 .doTipo(TipoOperacao.B).deValor(BigDecimal.valueOf(100.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoB());
+        BigDecimal taxa = new TaxaOperacaoTipoB().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 10.0);
     }
 
@@ -39,7 +38,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(35))
                 .doTipo(TipoOperacao.B).deValor(BigDecimal.valueOf(100.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoB());
+        BigDecimal taxa = new TaxaOperacaoTipoB().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 8.0);
     }
 
@@ -48,7 +47,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(35))
                 .doTipo(TipoOperacao.C).deValor(BigDecimal.valueOf(100.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoC());
+        BigDecimal taxa = new TaxaOperacaoTipoC().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 1.2);
     }
 
@@ -57,7 +56,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(30))
                 .doTipo(TipoOperacao.C).deValor(BigDecimal.valueOf(100.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoC());
+        BigDecimal taxa = new TaxaOperacaoTipoC().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 2.1);
     }
 
@@ -66,7 +65,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(25))
                 .doTipo(TipoOperacao.C).deValor(BigDecimal.valueOf(100.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoC());
+        BigDecimal taxa = new TaxaOperacaoTipoC().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 4.3);
     }
 
@@ -75,7 +74,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(20))
                 .doTipo(TipoOperacao.C).deValor(BigDecimal.valueOf(100.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoC());
+        BigDecimal taxa = new TaxaOperacaoTipoC().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 5.4);
     }
 
@@ -84,7 +83,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(15))
                 .doTipo(TipoOperacao.C).deValor(BigDecimal.valueOf(100.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoC());
+        BigDecimal taxa = new TaxaOperacaoTipoC().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 6.7);
     }
 
@@ -93,7 +92,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(10))
                 .doTipo(TipoOperacao.C).deValor(BigDecimal.valueOf(100.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoC());
+        BigDecimal taxa = new TaxaOperacaoTipoC().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 7.4);
     }
 
@@ -102,7 +101,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(5))
                 .doTipo(TipoOperacao.C).deValor(BigDecimal.valueOf(100.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoC());
+        BigDecimal taxa = new TaxaOperacaoTipoC().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 8.3);
     }
 
@@ -111,7 +110,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(10))
                 .doTipo(TipoOperacao.D).deValor(BigDecimal.valueOf(25000.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoD());
+        BigDecimal taxa = new TaxaOperacaoTipoD().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 752.0);
     }
     
@@ -120,7 +119,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(10))
                 .doTipo(TipoOperacao.D).deValor(BigDecimal.valueOf(25001.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoD());
+        BigDecimal taxa = new TaxaOperacaoTipoD().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 10.0);
     }
 
@@ -129,7 +128,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(10))
                 .doTipo(TipoOperacao.D).deValor(BigDecimal.valueOf(120000.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoD());
+        BigDecimal taxa = new TaxaOperacaoTipoD().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 10.0);
     }
 
@@ -138,7 +137,7 @@ public class TesteDeCalculoDeTaxas {
         Transferencia transferencia = new TransferenciaBuilder().em(LocalDate.now().plusDays(20))
                 .doTipo(TipoOperacao.D).deValor(BigDecimal.valueOf(130000.0))
                 .build();
-        BigDecimal taxa = new CalculadoraDeTaxas().calcula(transferencia, new TaxaOperacaoTipoD());
+        BigDecimal taxa = new TaxaOperacaoTipoD().calcula(transferencia);
         assertTrue(taxa.doubleValue() == 7020.0);
     }
 }

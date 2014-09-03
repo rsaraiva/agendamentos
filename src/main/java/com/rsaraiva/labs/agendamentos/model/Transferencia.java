@@ -18,7 +18,7 @@ public class Transferencia implements java.io.Serializable {
     
     private final LocalDate dataCadastro;
     
-    private final TipoOperacao tipoOperacao;
+    private TipoOperacao tipoOperacao;
 
     public Transferencia(String contaOrigem, String contaDestino, BigDecimal valor, LocalDate dataAgendamento, TipoOperacao tipoOperacao) {
         this.contaOrigem = contaOrigem;
@@ -59,6 +59,10 @@ public class Transferencia implements java.io.Serializable {
 
     public void setTaxa(BigDecimal taxa) {
         this.taxa = taxa;
+    }
+
+    public void setTipoOperacao(TipoOperacao tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
     }
 
     @Override

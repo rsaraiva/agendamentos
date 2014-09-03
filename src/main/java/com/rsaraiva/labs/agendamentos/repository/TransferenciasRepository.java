@@ -2,7 +2,7 @@ package com.rsaraiva.labs.agendamentos.repository;
 
 import com.rsaraiva.labs.agendamentos.model.TipoOperacao;
 import com.rsaraiva.labs.agendamentos.model.Transferencia;
-import com.rsaraiva.labs.agendamentos.service.TransferenciaBuilder;
+import com.rsaraiva.labs.agendamentos.model.TransferenciaBuilder;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +27,8 @@ public class TransferenciasRepository {
                 .daConta(contaOrigem).paraConta(contaDestino)
                 .em(dataAgendamento).doTipo(TipoOperacao.valueOf(tipoOperacao)).build();
         
-        transferencias = transferencias.stream().filter(t -> !t.equals(transferenciaARemover)).collect(Collectors.toList());
+        transferencias = transferencias.stream()
+                .filter(t -> !t.equals(transferenciaARemover))
+                .collect(Collectors.toList());
     }
 }

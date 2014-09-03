@@ -1,4 +1,4 @@
-package com.rsaraiva.labs.agendamentos.service;
+package com.rsaraiva.labs.agendamentos.model;
 
 import com.rsaraiva.labs.agendamentos.model.TipoOperacao;
 import com.rsaraiva.labs.agendamentos.model.Transferencia;

@@ -11,7 +11,7 @@ import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
-public class AgendamentosService {
+public class TransferenciasService {
     
     @Inject
     private TransferenciasRepository repository;

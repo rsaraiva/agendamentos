@@ -6,7 +6,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import com.rsaraiva.labs.agendamentos.model.TipoOperacao;
 import com.rsaraiva.labs.agendamentos.model.Transferencia;
-import com.rsaraiva.labs.agendamentos.service.AgendamentosService;
+import com.rsaraiva.labs.agendamentos.service.TransferenciasService;
 import java.time.LocalDate;
 import javax.inject.Inject;
 
@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public class AgendamentosController {
     
     @Inject private Result result;
-    @Inject private AgendamentosService service;
+    @Inject private TransferenciasService service;
 
     @Path("/")
     public void agendamentos() {
