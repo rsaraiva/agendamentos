@@ -14,7 +14,9 @@ $(function($) {
             "transferencia.valor": {required: "Informe o valor da transferência"},
             "transferencia.dataAgendamento": {required: "Informe a data da transferência"},
             "transferencia.tipoOperacao": {required: "Informe o tipo da operação"}
-        }
+        },
+        onkeyup: false,
+        onclick: false
     });
 
     $("#contaOrigem").mask("99999-9");

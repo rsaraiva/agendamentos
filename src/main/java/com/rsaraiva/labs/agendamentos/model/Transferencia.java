@@ -2,6 +2,7 @@ package com.rsaraiva.labs.agendamentos.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Transferencia implements java.io.Serializable {
@@ -48,9 +49,19 @@ public class Transferencia implements java.io.Serializable {
     public LocalDate getDataAgendamento() {
         return dataAgendamento;
     }
+    
+    public String getDataAgendamentoString() {
+        if (dataAgendamento == null) return "";
+        return dataAgendamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
 
     public LocalDate getDataCadastro() {
         return dataCadastro;
+    }
+    
+    public String getDataCadastroString() {
+        if (dataCadastro == null) return "";
+        return dataCadastro.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public TipoOperacao getTipoOperacao() {

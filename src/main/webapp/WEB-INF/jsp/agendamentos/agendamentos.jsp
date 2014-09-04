@@ -58,7 +58,8 @@
                             <th>Origem</th>
                             <th>Destino</th>
                             <th>Valor</th>
-                            <th>Data</th>
+                            <th>Data Cadastro</th>
+                            <th>Data Agendamento</th>
                             <th>Operação</th>
                             <th>Taxa</th>
                             <th style="width: 30px;">&nbsp;</th>
@@ -69,10 +70,11 @@
                             <tr>
                                 <td>${transferencia.contaOrigem}</td>
                                 <td>${transferencia.contaDestino}</td>
-                                <td>${transferencia.valor}</td>
-                                <td>${transferencia.dataAgendamento}</td>
+                                <td><fmt:formatNumber value="${transferencia.valor}" maxFractionDigits="2" minFractionDigits="2"/></td>
+                                <td>${transferencia.dataCadastroString}</td>
+                                <td>${transferencia.dataAgendamentoString}</td>
                                 <td>${transferencia.tipoOperacao}</td>
-                                <td>${transferencia.taxa}</td>
+                                <td><fmt:formatNumber value="${transferencia.taxa}" maxFractionDigits="2" minFractionDigits="2"/></td>
                                 <td>
                                     <button type="button" id="botaoExcluir" class="btn btn-mini" 
                                             onclick="excluirAgendamento('${transferencia.contaOrigem}', '${transferencia.contaDestino}', '${transferencia.dataAgendamento}', '${transferencia.tipoOperacao}')">
