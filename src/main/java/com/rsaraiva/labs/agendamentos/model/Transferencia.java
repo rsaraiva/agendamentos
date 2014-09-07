@@ -13,13 +13,13 @@ public class Transferencia implements java.io.Serializable {
     
     private final BigDecimal valor;
     
-    private BigDecimal taxa = BigDecimal.ZERO;
-    
     private final LocalDate dataAgendamento;
     
     private final LocalDate dataCadastro;
     
     private TipoOperacao tipoOperacao;
+    
+    private BigDecimal taxa = BigDecimal.ZERO;
 
     public Transferencia(String contaOrigem, String contaDestino, BigDecimal valor, LocalDate dataAgendamento, TipoOperacao tipoOperacao) {
         this.contaOrigem = contaOrigem;
@@ -66,14 +66,6 @@ public class Transferencia implements java.io.Serializable {
 
     public TipoOperacao getTipoOperacao() {
         return tipoOperacao;
-    }
-
-    public void setTaxa(BigDecimal taxa) {
-        this.taxa = taxa;
-    }
-
-    public void setTipoOperacao(TipoOperacao tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
     }
     
     public void adicionaTaxa(BigDecimal taxa) {
