@@ -28,14 +28,8 @@ public class AgendamentosController {
     }
     
     @Get("/exclui/{contaOrigem}/{contaDestino}/{dataAgendamento}/{tipoOperacao}")
-    public void exclui(String contaOrigem, String contaDestino, String dataAgendamento, String tipoOperacao) {
-        service.exclui(contaOrigem, contaDestino, toLocalDate(dataAgendamento), tipoOperacao);
+    public void exclui(String contaOrigem, String contaDestino, LocalDate dataAgendamento, String tipoOperacao) {
+        service.exclui(contaOrigem, contaDestino, dataAgendamento, tipoOperacao);
         result.redirectTo(this).agendamentos();
-    }
-    
-    private LocalDate toLocalDate(String s) {
-        // TODO: tenso! melhorar pesquisando ou implementando converter direto no vraptor para LocalDate
-        String[] split = s.split("-");
-        return LocalDate.of(Integer.valueOf(split[0]), Integer.valueOf(split[1]), Integer.valueOf(split[2]));  
     }
 }

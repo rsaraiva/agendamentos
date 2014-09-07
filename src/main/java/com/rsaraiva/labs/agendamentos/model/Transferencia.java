@@ -13,7 +13,7 @@ public class Transferencia implements java.io.Serializable {
     
     private final BigDecimal valor;
     
-    private BigDecimal taxa;
+    private BigDecimal taxa = BigDecimal.ZERO;
     
     private final LocalDate dataAgendamento;
     
@@ -74,6 +74,10 @@ public class Transferencia implements java.io.Serializable {
 
     public void setTipoOperacao(TipoOperacao tipoOperacao) {
         this.tipoOperacao = tipoOperacao;
+    }
+    
+    public void adicionaTaxa(BigDecimal taxa) {
+    	this.taxa = this.taxa.add(taxa);
     }
 
     @Override
